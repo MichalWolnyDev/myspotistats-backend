@@ -13,6 +13,7 @@ const api = express();
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
+const SITE_URL = process.env.URL;
 
 const stateKey = "spotify_auth_state";
 
@@ -80,7 +81,7 @@ router.get("/callback", (req, res) => {
           expires_in,
         });
 
-        res.redirect(`http://localhost:5173/dashboard?${queryParams}`);
+        res.redirect(`${SITE_URL}/dashboard?${queryParams}`);
       } else {
         res.redirect(`/?${querystring.stringify({ error: "invalid_token" })}`);
       }
@@ -118,7 +119,7 @@ router.get("/refresh_token", (req, res) => {
           expires_in,
         });
 
-        res.redirect(`http://localhost:5173/dashboard?${queryParams}`);
+        res.redirect(`${SITE_URL}/dashboard?${queryParams}`);
       } else {
         res.redirect(`/?${querystring.stringify({ error: "invalid_token" })}`);
       }
