@@ -81,7 +81,8 @@ router.get("/callback", (req, res) => {
           expires_in,
         });
 
-        res.redirect(`${SITE_URL}/dashboard?${queryParams}`);
+        // res.redirect(`${SITE_URL}/dashboard?${queryParams}`);
+        res.redirect(`https://myspotistats.netlify.app/dashboard?${queryParams}`);
       } else {
         res.redirect(`/?${querystring.stringify({ error: "invalid_token" })}`);
       }
@@ -119,7 +120,8 @@ router.get("/refresh_token", (req, res) => {
           expires_in,
         });
 
-        res.redirect(`${SITE_URL}/dashboard?${queryParams}`);
+        // res.redirect(`${SITE_URL}/dashboard?${queryParams}`);
+        res.redirect(`https://myspotistats.netlify.app/dashboard?${queryParams}`);
       } else {
         res.redirect(`/?${querystring.stringify({ error: "invalid_token" })}`);
       }
